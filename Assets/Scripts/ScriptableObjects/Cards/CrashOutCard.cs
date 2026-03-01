@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu()]
+[CreateAssetMenu(menuName = "Cards/CrashOutCard")]
 public class CrashOutCard : Card
 {
     public override void PerformAction(Player player, Entity target, GameManager manager)

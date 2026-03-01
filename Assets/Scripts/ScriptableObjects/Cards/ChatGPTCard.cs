@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu()]
+[CreateAssetMenu(menuName = "Cards/ChatGPTCard")]
 public class ChatGPTCard : Card
 {
     public override void PerformAction(Player player, Entity target, GameManager manager)

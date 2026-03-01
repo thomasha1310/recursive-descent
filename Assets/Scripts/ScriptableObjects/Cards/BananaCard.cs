@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu()]
+[CreateAssetMenu(menuName = "Cards/BananaCard")]
 public class BananaCard : Card
 {
     public override void PerformAction(Player player, Entity target, GameManager manager)
