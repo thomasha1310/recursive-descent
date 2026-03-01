@@ -3,8 +3,8 @@ using UnityEngine;
 public class MissingSemicolonAction : EnemyActionData
 {
     public new string actionName = "Missing Semicolon";
-    public override void PerformAction(Enemy self, Entity target, GameManager manager)
+    public override void PerformAction(Enemy self, GameManager manager)
     {
-        target.ReceiveAttack(self.CalculateOutgoingDamage(Random.Range(6, 8)));
+        manager.CurrentPlayer.ReceiveAttack(self.CalculateOutgoingDamage(Random.Range(6, 8)));
     }
 }
