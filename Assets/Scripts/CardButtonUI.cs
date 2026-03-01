@@ -12,17 +12,17 @@ public class CardButtonUI : MonoBehaviour
     [SerializeField] private Image cardBackground;
     [SerializeField] private Button button;
 
-    private CardData cardData;
+    private readonly Card card;
 
-    public void Setup(CardData data, bool canAfford)
+    public void Setup(Card card, bool canAfford)
     {
         // Set texts from card data
         // Grey out if canAfford is false
         // TODO
     }
 
-    public CardData GetCardData()
+    public Card GetCard()
     {
-        return cardData;
+        return card;
     }
 }
