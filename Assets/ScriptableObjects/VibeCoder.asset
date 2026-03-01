@@ -15,7 +15,13 @@ MonoBehaviour:
   entityName: VibeCoder
   flavorText: "What\u2019s an IDE???"
   maxHealth: 67
-  startingHand: []
-  startingDeck: []
+  startingDeck:
+  - {fileID: 11400000, guid: fbfec94318a234742952f17d9a1036d2, type: 2}
+  - {fileID: 11400000, guid: fbfec94318a234742952f17d9a1036d2, type: 2}
+  - {fileID: 11400000, guid: 3e29a61b49b103b45957d8ee91ad3ba1, type: 2}
+  - {fileID: 11400000, guid: 3e29a61b49b103b45957d8ee91ad3ba1, type: 2}
+  - {fileID: 11400000, guid: 19798fbd7aa98a840abd7480fd6118bc, type: 2}
+  - {fileID: 11400000, guid: 8183370985a5cd94ca2be9eb8c34fdc4, type: 2}
+  - {fileID: 11400000, guid: 8352c5e8a5bb2de4c99837cb0ae61948, type: 2}
   playerClass: 2
-  avatar: {fileID: 0}
+  avatar: {fileID: 5888204163513934266, guid: 32584ab9247374a1aa136c477f221a54, type: 3}

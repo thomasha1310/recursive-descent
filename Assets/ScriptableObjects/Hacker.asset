@@ -15,7 +15,6 @@ MonoBehaviour:
   entityName: Hacker
   flavorText: I use Kali, btw.
   maxHealth: 75
-  startingHand: []
   startingDeck: []
   playerClass: 1
-  avatar: {fileID: 0}
+  avatar: {fileID: 6056072149491432138, guid: 13b96965316ebdff49bb97c821385ce8, type: 3}
