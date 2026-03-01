@@ -12,17 +12,17 @@ public class Player : Entity
     private int energy;
     private int maxEnergy = 3;
 
-    private List<CardData> deck = new List<CardData>();
-    private List<CardData> hand = new List<CardData>();
-    private List<CardData> drawPile = new List<CardData>();
-    private List<CardData> discardPile = new List<CardData>();
+    private List<Card> deck = new List<Card>();
+    private List<Card> hand = new List<Card>();
+    private List<Card> drawPile = new List<Card>();
+    private List<Card> discardPile = new List<Card>();
 
     // properties
 
     public int Energy => energy;
     public int MaxEnergy => maxEnergy;
-    public List<CardData> Hand => hand;
-    public List<CardData> Deck => deck;
+    public List<Card> Hand => hand;
+    public List<Card> Deck => deck;
 
     // initialization
 
@@ -71,7 +71,7 @@ public class Player : Entity
         // TODO
     }
 
-    public void PlayCard(CardData card)
+    public void PlayCard(Card card)
     {
         // Remove from hand
         // Add to discardPile
@@ -85,7 +85,7 @@ public class Player : Entity
         // TODO
     }
 
-    public void AddCardToDeck(CardData card)
+    public void AddCardToDeck(Card card)
     {
         // Called when player picks a reward card
         // TODO

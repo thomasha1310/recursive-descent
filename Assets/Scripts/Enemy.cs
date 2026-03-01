@@ -1,6 +1,7 @@
 //the enemies class
 
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -33,24 +34,21 @@ public class EnemyData : ScriptableObject
 
 public class Enemy : Entity
 {
-    private EnemyData data;
+    private EnemyData enemyData;
 
     // What the enemy intends to do next (shown to player)
     private EnemyAttack nextAction;
 
     // properties of the enemy
 
-    public EnemyData Data => data;
+    public EnemyData EnemyData => enemyData;
     public EnemyAttack NextAction => nextAction;
 
     // setup
 
-    public void InitializeFromData(EnemyData enemyData)
+    public override void Initialize(int id, EntityData entityData)
     {
-        // Randomize HP between minHP and maxHP
-        // Set name, flavorText from data
-        // Pick first intended action
-        // TODO
+
     }
 
     // dumbass AI 

@@ -22,7 +22,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private EnemyData bossEnemy;           // Timmy
 
     [Header("Card Reward Pool")]
-    [SerializeField] private List<CardData> rewardPool;
+    [SerializeField] private List<Card> rewardPool;
 
     private int currentRoomIndex = 0;
 
@@ -68,13 +68,13 @@ public class RoomManager : MonoBehaviour
 
     // grab the rewards
 
-    public List<CardData> GetCardRewards(int count, bool isChest)
+    public List<Card> GetCardRewards(int count, bool isChest)
     {
         // Pick 'count' random cards from rewardPool
         // If isChest, weight towards rarer cards
         // Return list for UI to display
         // TODO
-        return new List<CardData>();
+        return new List<Card>();
     }
 
     // bonfire room for heals
