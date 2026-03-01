@@ -10,12 +10,26 @@ public class UIManager : MonoBehaviour
     [Header("Screens")]
     [SerializeField] private GameObject mainMenuScreen;
     [SerializeField] private GameObject classSelectScreen;
+    [SerializeField] private GameObject mapSelectScreen;
     [SerializeField] private GameObject battleScreen;
     [SerializeField] private GameObject rewardScreen;
     [SerializeField] private GameObject bonfireScreen;
     [SerializeField] private GameObject chestScreen;
     [SerializeField] private GameObject victoryScreen;
     [SerializeField] private GameObject gameOverScreen;
+
+    private void Awake()
+    {
+        mainMenuScreen = GameObject.Find("MainMenu");
+        classSelectScreen = GameObject.Find("SelectCharacter");
+        mapSelectScreen = GameObject.Find("Map");
+        battleScreen = GameObject.Find("Battle");
+        rewardScreen = GameObject.Find("Reward");
+        bonfireScreen = GameObject.Find("Bonfire");
+        chestScreen = GameObject.Find("Chest");
+        victoryScreen = GameObject.Find("Victory");
+        gameOverScreen = GameObject.Find("GameOver");
+    }
 
     [Header("Battle UI")]
     [SerializeField] private TMP_Text playerHPText;
@@ -44,6 +58,7 @@ public class UIManager : MonoBehaviour
         // Hide all screens, show the requested one
         mainMenuScreen.SetActive(false);
         classSelectScreen.SetActive(false);
+        mapSelectScreen.SetActive(false);
         battleScreen.SetActive(false);
         rewardScreen.SetActive(false);
         bonfireScreen.SetActive(false);
@@ -53,17 +68,15 @@ public class UIManager : MonoBehaviour
 
         switch (screenName)
         {
-            case "MainMenu": mainMenuScreen.SetActive(true); break;
-            case "SelectCharacter": classSelectScreen.SetActive(true); break;
+            case "menu": mainMenuScreen.SetActive(true); break;
+            case "character": classSelectScreen.SetActive(true); break;
+            case "map": mapSelectScreen.SetActive(true); break;
             case "battle": battleScreen.SetActive(true); break;
             case "reward": rewardScreen.SetActive(true); break;
             case "bonfire": bonfireScreen.SetActive(true); break;
             case "chest": chestScreen.SetActive(true); break;
             case "victory": victoryScreen.SetActive(true); break;
             case "gameOver": gameOverScreen.SetActive(true); break;
-        }
-        {
-            
         }
     }
 

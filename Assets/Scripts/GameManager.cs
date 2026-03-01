@@ -38,6 +38,11 @@ public class GameManager : MonoBehaviour
 
     // the GAME FLOW METHODS
 
+    public void OnStartButtonPressed()
+    {
+        uiManager.ShowScreen("character");
+    }
+
     public void StartNewRun(PlayerClassData selectedClass)
     {
         // Initialize player from class data

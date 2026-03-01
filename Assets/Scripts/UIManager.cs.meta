@@ -1,5 +1,9 @@
 fileFormatVersion: 2
 guid: c6f801d9607caa2f7aed5bd0fb736962
+labels:
+- Dynamic
+- Gui
+- Scene
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
