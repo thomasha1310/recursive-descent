@@ -21,9 +21,7 @@ public class TimmyBoss : Enemy
 
     public string GetRandomQuote()
     {
-        // Return a random quote from the array
-        // TODO
-        return "";
+        return timmyQuotes[Random.Range(0, timmyQuotes.Length)];
     }
 
     // Override ExecuteAction to show a quote each turn
