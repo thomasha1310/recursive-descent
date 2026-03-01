@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     private List<Enemy> currentEnemies = new List<Enemy>();
     private bool isPlayerTurn;
-    private Card selectedCard;
+    private CardData selectedCard;
 
     [Header("Run Stats — for end screen")]
     private int enemiesDefeated;
@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
         totalDamageTaken = 0;
         cardsPlayed = 0;
 
+        roomManager.StartRun();
         uiManager.ShowScreen("map");
     }
 
@@ -108,7 +109,7 @@ public class GameManager : MonoBehaviour
         // discard remaining hand
         while (player.Hand.Count > 0)
         {
-            Card c = player.Hand[0];
+            CardData c = player.Hand[0];
             player.Hand.RemoveAt(0);
             player.DiscardPile.Add(c);
         }
@@ -144,7 +145,7 @@ public class GameManager : MonoBehaviour
 
     // card selection flow
 
-    private void OnCardClicked(Card card)
+    private void OnCardClicked(CardData card)
     {
         if (!isPlayerTurn) return;
         if (player.Energy < card.energyCost) return;
@@ -222,6 +223,36 @@ public class GameManager : MonoBehaviour
     private void OnPlayerDied()
     {
         uiManager.ShowGameOverScreen(GetRunStats());
+    }
+
+    // non-battle rooms
+
+    public void ShowChestReward()
+    {
+        List<CardData> rewards = roomManager.GetCardRewards(3, true);
+        uiManager.ShowScreen("chest");
+        uiManager.ShowCardRewards(rewards, OnRewardCardPicked);
+    }
+
+    public void ShowBonfire()
+    {
+        uiManager.ShowScreen("bonfire");
+        uiManager.ShowBonfire(() =>
+        {
+            player.Heal(player.Data.maxHealth);
+            uiManager.UpdatePlayerUI(player);
+            roomManager.AdvanceToNextRoom();
+        });
+    }
+
+    public void ShowMap()
+    {
+        uiManager.ShowScreen("map");
+    }
+
+    public void OnVictory()
+    {
+        uiManager.ShowVictoryScreen(GetRunStats());
     }
 
     // --- Stats ---

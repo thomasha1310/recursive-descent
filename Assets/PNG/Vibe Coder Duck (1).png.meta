@@ -1,73 +1,34 @@
 fileFormatVersion: 2
-guid: 0ac3e6978b8cbef1fb0d4db6155964aa
+guid: 32584ab9247374a1aa136c477f221a54
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4874805957649004575
-    second: misquito_0
+      213: 5888204163513934266
+    second: Vibe Coder Duck (1)_0
   - first:
-      213: 5945514421275471221
-    second: misquito_1
+      213: -1416363947900694799
+    second: Vibe Coder Duck (1)_1
   - first:
-      213: -1616187244234852911
-    second: misquito_2
+      213: -3254071203111416820
+    second: Vibe Coder Duck (1)_2
   - first:
-      213: -1404432300124159087
-    second: misquito_3
+      213: -249364464723250501
+    second: Vibe Coder Duck (1)_3
   - first:
-      213: 3881652194832322747
-    second: misquito_4
+      213: -6394190852724285368
+    second: Vibe Coder Duck (1)_4
   - first:
-      213: 3552225968958174393
-    second: misquito_5
+      213: -864335121315686410
+    second: Vibe Coder Duck (1)_5
   - first:
-      213: -504453612537352242
-    second: misquito_6
+      213: -5613939655863551333
+    second: Vibe Coder Duck (1)_6
   - first:
-      213: 8535921077235273336
-    second: misquito_7
+      213: -7464645303154705567
+    second: Vibe Coder Duck (1)_7
   - first:
-      213: 2007950474942519969
-    second: misquito_8
-  - first:
-      213: 7029882791286131481
-    second: misquito_9
-  - first:
-      213: -6614422355290577103
-    second: misquito_10
-  - first:
-      213: 5029949200178703819
-    second: misquito_11
-  - first:
-      213: 1727183244126929365
-    second: misquito_12
-  - first:
-      213: -4757359496372951459
-    second: misquito_13
-  - first:
-      213: -7254643109546519731
-    second: misquito_14
-  - first:
-      213: -4778206330286773020
-    second: misquito_15
-  - first:
-      213: 1169995761583829788
-    second: misquito_16
-  - first:
-      213: 1996956643236972540
-    second: misquito_17
-  - first:
-      213: 1258872288834249831
-    second: misquito_18
-  - first:
-      213: -7030971579358235712
-    second: misquito_19
-  - first:
-      213: -3459819506325766702
-    second: misquito_20
-  - first:
-      213: 9046295164119306978
-    second: misquito_21
+      213: -600663546551803912
+    second: Vibe Coder Duck (1)_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -159,194 +120,203 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: misquito_0
+      name: Vibe Coder Duck (1)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
+        x: 9
+        y: 143
+        width: 48
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e78f513fc5395cb0800000000000000
-      internalID: -4874805957649004575
+      spriteID: ab1693b5d7a17b150800000000000000
+      internalID: 5888204163513934266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: misquito_1
+      name: Vibe Coder Duck (1)_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
+        x: 72
+        y: 143
+        width: 49
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 57d261f8dd5b28250800000000000000
-      internalID: 5945514421275471221
+      spriteID: 1fe85bc5e70185ce0800000000000000
+      internalID: -1416363947900694799
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: misquito_2
+      name: Vibe Coder Duck (1)_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
+        x: 133
+        y: 143
+        width: 52
+        height: 37
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1d53dd8a3462299e0800000000000000
-      internalID: -1616187244234852911
+      spriteID: c0c47b84b7737d2d0800000000000000
+      internalID: -3254071203111416820
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: misquito_3
+      name: Vibe Coder Duck (1)_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
+        x: 5
+        y: 79
+        width: 52
+        height: 37
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 193c3089344728ce0800000000000000
-      internalID: -1404432300124159087
+      spriteID: bb2b09c27541a8cf0800000000000000
+      internalID: -249364464723250501
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: misquito_4
+      name: Vibe Coder Duck (1)_4
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
+        x: 65
+        y: 79
+        width: 56
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bb09896fa166ed530800000000000000
-      internalID: 3881652194832322747
+      spriteID: 840215d1c454347a0800000000000000
+      internalID: -6394190852724285368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: misquito_5
+      name: Vibe Coder Duck (1)_5
       rect:
         serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
+        x: 135
+        y: 79
+        width: 50
+        height: 31
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9b47ba1c2ba0c4130800000000000000
-      internalID: 3552225968958174393
+      spriteID: 6f7951f59c34104f0800000000000000
+      internalID: -864335121315686410
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: misquito_6
+      name: Vibe Coder Duck (1)_6
       rect:
         serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
+        x: 8
+        y: 15
+        width: 49
+        height: 33
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ecf6c03bc12dff8f0800000000000000
-      internalID: -504453612537352242
+      spriteID: b9a36cd70a74712b0800000000000000
+      internalID: -5613939655863551333
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: misquito_7
+      name: Vibe Coder Duck (1)_7
       rect:
         serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
+        x: 69
+        y: 15
+        width: 52
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 87ec0679efea57670800000000000000
-      internalID: 8535921077235273336
+      spriteID: 16bfc2b65a0486890800000000000000
+      internalID: -7464645303154705567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vibe Coder Duck (1)_8
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 15
+        width: 52
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ffd046dfa30aa7f0800000000000000
+      internalID: -600663546551803912
       vertices: []
       indices: 
       edges: []
@@ -355,7 +325,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f4da8aa7edc113b398ab8df80ae903a7
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -363,18 +333,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      misquito_0: -4874805957649004575
-      misquito_1: 5945514421275471221
-      misquito_2: -1616187244234852911
-      misquito_3: -1404432300124159087
-      misquito_4: 3881652194832322747
-      misquito_5: 3552225968958174393
-      misquito_6: -504453612537352242
-      misquito_7: 8535921077235273336
+      Vibe Coder Duck (1)_0: 5888204163513934266
+      Vibe Coder Duck (1)_1: -1416363947900694799
+      Vibe Coder Duck (1)_2: -3254071203111416820
+      Vibe Coder Duck (1)_3: -249364464723250501
+      Vibe Coder Duck (1)_4: -6394190852724285368
+      Vibe Coder Duck (1)_5: -864335121315686410
+      Vibe Coder Duck (1)_6: -5613939655863551333
+      Vibe Coder Duck (1)_7: -7464645303154705567
+      Vibe Coder Duck (1)_8: -600663546551803912
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

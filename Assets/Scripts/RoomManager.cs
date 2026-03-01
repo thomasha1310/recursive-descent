@@ -2,87 +2,118 @@
 
 using System.Collections.Generic;
 using UnityEngine;
-
-[System.Serializable]
-public class RoomConfig
-{
-    public RoomType type;
-    public int enemyHPBudget;   // Only used for Battle rooms
-}
+using UnityEngine.UI;
 
 public class RoomManager : MonoBehaviour
 {
-    [Header("Room Sequence")]
-    // fight -> fight -> chest -> fight -> fight -> bonfire -> boss
-    [SerializeField] private List<RoomConfig> roomSequence;
-
-    [Header("Enemy Pool")]
-    [SerializeField] private List<EnemyData> smallEnemies;  // Mosquito, Moth
-    [SerializeField] private List<EnemyData> bigEnemies;    // Spider, Cockroach
-    [SerializeField] private EnemyData bossEnemy;           // Timmy
+    [Header("Enemy Data — assign in Inspector")]
+    [SerializeField] private EnemyData mosquitoData;
+    [SerializeField] private EnemyData cockroachData;
+    [SerializeField] private EnemyData spiderData;
+    [SerializeField] private EnemyData mothData;
+    [SerializeField] private EnemyData bossData;
 
     [Header("Card Reward Pool")]
     [SerializeField] private List<CardData> rewardPool;
 
     private int currentRoomIndex = 0;
 
-    // define room progresssions
+    // button names in order matching the room sequence
+    private readonly string[] roomButtonNames = {
+        "battle_1", "battle_2", "chest", "battle_3", "battle_4", "bonfire", "boss"
+    };
+
+    private Button[] roomButtons;
+
+    private void Awake()
+    {
+        roomButtons = new Button[roomButtonNames.Length];
+        for (int i = 0; i < roomButtonNames.Length; i++)
+        {
+            GameObject go = GameObject.Find(roomButtonNames[i]);
+            if (go != null)
+            {
+                roomButtons[i] = go.GetComponent<Button>();
+                int index = i; // capture for closure
+                roomButtons[i].onClick.AddListener(() => OnRoomButtonClicked(index));
+            }
+        }
+    }
 
     public void StartRun()
     {
-        // Reset to room 0
-        // Load first room
-        // TODO
+        currentRoomIndex = 0;
+        UpdateMapButtons();
+    }
+
+    private void UpdateMapButtons()
+    {
+        for (int i = 0; i < roomButtons.Length; i++)
+        {
+            if (roomButtons[i] == null) continue;
+            roomButtons[i].interactable = (i == currentRoomIndex);
+        }
+    }
+
+    private void OnRoomButtonClicked(int index)
+    {
+        if (index != currentRoomIndex) return;
+        LoadRoom(index);
+    }
+
+    private void LoadRoom(int index)
+    {
+        switch (index)
+        {
+            case 0: // battle_1: 2 mosquitos
+                GameManager.Instance.StartBattle(new List<EnemyData> { mosquitoData, mosquitoData });
+                break;
+            case 1: // battle_2: 1 mosquito + 1 cockroach
+                GameManager.Instance.StartBattle(new List<EnemyData> { mosquitoData, cockroachData });
+                break;
+            case 2: // chest: pick 1 of 3 cards
+                GameManager.Instance.ShowChestReward();
+                break;
+            case 3: // battle_3: 1 spider
+                GameManager.Instance.StartBattle(new List<EnemyData> { spiderData });
+                break;
+            case 4: // battle_4: 1 moth
+                GameManager.Instance.StartBattle(new List<EnemyData> { mothData });
+                break;
+            case 5: // bonfire: heal to full
+                GameManager.Instance.ShowBonfire();
+                break;
+            case 6: // boss: Timmy
+                GameManager.Instance.StartBattle(new List<EnemyData> { bossData });
+                break;
+        }
     }
 
     public void AdvanceToNextRoom()
     {
-        // currentRoomIndex++
-        // If past last room → victory
-        // Otherwise load the next room
-        // TODO
+        currentRoomIndex++;
+        if (currentRoomIndex >= roomButtonNames.Length)
+        {
+            GameManager.Instance.OnVictory();
+            return;
+        }
+        GameManager.Instance.ShowMap();
+        UpdateMapButtons();
     }
-
-    private void LoadRoom(RoomConfig room)
-    {
-        // Switch on room.type:
-        //   Battle → GenerateEnemies(room.enemyHPBudget) → GameManager.StartBattle()
-        //   Chest  → ShowChestReward()
-        //   Bonfire → ShowBonfire()
-        //   Boss   → GameManager.StartBattle(bossEnemy)
-        // TODO
-    }
-
-    // generate enemies for room
-
-    private List<EnemyData> GenerateEnemies(int hpBudget)
-    {
-        // Fill the budget with enemies from the pool
-        // Strategy: pick random enemy, if it fits in budget, add it
-        // Repeat until budget is full or nearly full
-        // Example: budget 30 → 2x Mosquito (13+13=26) 
-        // Example: budget 50 → 1x Spider (38) + can't fit another big one
-        // TODO
-        return new List<EnemyData>();
-    }
-
-    // grab the rewards
 
     public List<CardData> GetCardRewards(int count, bool isChest)
     {
-        // Pick 'count' random cards from rewardPool
-        // If isChest, weight towards rarer cards
-        // Return list for UI to display
-        // TODO
-        return new List<CardData>();
-    }
+        if (rewardPool == null || rewardPool.Count == 0) return new List<CardData>();
 
-    // bonfire room for heals
+        List<CardData> rewards = new List<CardData>();
+        List<CardData> pool = new List<CardData>(rewardPool);
 
-    public void RestAtBonfire()
-    {
-        // Heal player to full HP
-        // AdvanceToNextRoom()
-        // TODO
+        for (int i = 0; i < count && pool.Count > 0; i++)
+        {
+            int index = Random.Range(0, pool.Count);
+            rewards.Add(pool[index]);
+            pool.RemoveAt(index);
+        }
+        return rewards;
     }
 }
