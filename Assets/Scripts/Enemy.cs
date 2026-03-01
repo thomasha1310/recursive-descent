@@ -34,11 +34,16 @@ public class Enemy : Entity
         base.Initialize(id, entityData);
         enemyData = entityData as EnemyData;
 
-        // set sprite if there's an Image component
+        if (enemyData != null)
+        {
+            transform.localScale = new Vector3(enemyData.spawnScale, enemyData.spawnScale, 1f);
+        }
+
         Image img = GetComponent<Image>();
         if (img != null && entityData.sprite != null)
         {
             img.sprite = entityData.sprite;
+            img.SetNativeSize();
         }
 
         DecideNextIntent();
