@@ -40,6 +40,7 @@ public class UIManager : MonoBehaviour
     }
 
     [Header("Battle UI")]
+    private Image playerSpriteImage;
     [SerializeField] private TMP_Text playerHPText;
     [SerializeField] private Slider playerHPBar;
     [SerializeField] private TMP_Text energyText;
@@ -91,6 +92,14 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePlayerUI(Player player)
     {
+        if (playerSpriteImage == null)
+        {
+            GameObject go = GameObject.Find("Image");
+            if (go != null) playerSpriteImage = go.GetComponent<Image>();
+        }
+        if (playerSpriteImage != null && player.PlayerData.avatar != null)
+            playerSpriteImage.sprite = player.PlayerData.avatar;
+
         if (playerHPText != null)
             playerHPText.text = player.Health + " / " + player.Data.maxHealth;
         if (playerHPBar != null)

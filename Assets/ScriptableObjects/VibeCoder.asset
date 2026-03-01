@@ -15,6 +15,7 @@ MonoBehaviour:
   entityName: VibeCoder
   flavorText: "What\u2019s an IDE???"
   maxHealth: 67
+  sprite: {fileID: 5888204163513934266, guid: 32584ab9247374a1aa136c477f221a54, type: 3}
   startingDeck:
   - {fileID: 11400000, guid: fbfec94318a234742952f17d9a1036d2, type: 2}
   - {fileID: 11400000, guid: fbfec94318a234742952f17d9a1036d2, type: 2}

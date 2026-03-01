@@ -15,7 +15,7 @@ MonoBehaviour:
   entityName: Hacker
   flavorText: I use Kali, btw.
   maxHealth: 75
-  sprite: {fileID: 0}
+  sprite: {fileID: 6056072149491432138, guid: 13b96965316ebdff49bb97c821385ce8, type: 3}
   startingDeck:
   - {fileID: 11400000, guid: fbfec94318a234742952f17d9a1036d2, type: 2}
   - {fileID: 11400000, guid: fbfec94318a234742952f17d9a1036d2, type: 2}
