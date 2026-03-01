@@ -42,7 +42,29 @@ public class UIManager : MonoBehaviour
     public void ShowScreen(string screenName)
     {
         // Hide all screens, show the requested one
-        // TODO
+        mainMenuScreen.SetActive(false);
+        classSelectScreen.SetActive(false);
+        battleScreen.SetActive(false);
+        rewardScreen.SetActive(false);
+        bonfireScreen.SetActive(false);
+        chestScreen.SetActive(false);
+        victoryScreen.SetActive(false);
+        gameOverScreen.SetActive(false);
+
+        switch (screenName)
+        {
+            case "MainMenu": mainMenuScreen.SetActive(true); break;
+            case "SelectCharacter": classSelectScreen.SetActive(true); break;
+            case "battle": battleScreen.SetActive(true); break;
+            case "reward": rewardScreen.SetActive(true); break;
+            case "bonfire": bonfireScreen.SetActive(true); break;
+            case "chest": chestScreen.SetActive(true); break;
+            case "victory": victoryScreen.SetActive(true); break;
+            case "gameOver": gameOverScreen.SetActive(true); break;
+        }
+        {
+            
+        }
     }
 
     // diplaying teh battle UI
