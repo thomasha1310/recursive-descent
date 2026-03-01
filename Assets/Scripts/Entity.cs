@@ -159,8 +159,7 @@ public abstract class Entity : MonoBehaviour
 
     public bool IsSuppressed()
     {
-        // TODO
-        return false;
+        return HasEffect(EffectType.Suppressed);
     }
 
     protected virtual void Die()

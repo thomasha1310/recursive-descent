@@ -10,6 +10,7 @@ MonoImporter:
   defaultReferences:
   - mainMenuScreen: {instanceID: 0}
   - classSelectScreen: {instanceID: 0}
+  - mapSelectScreen: {instanceID: 0}
   - battleScreen: {instanceID: 0}
   - rewardScreen: {instanceID: 0}
   - bonfireScreen: {instanceID: 0}

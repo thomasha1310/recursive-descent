@@ -29,6 +29,27 @@ public class UIManager : MonoBehaviour
         chestScreen = GameObject.Find("Chest");
         victoryScreen = GameObject.Find("Victory");
         gameOverScreen = GameObject.Find("GameOver");
+
+        // Start button
+        GameObject.Find("Start").GetComponent<Button>().onClick.AddListener(
+            () => GameManager.Instance.OnStartButtonPressed()
+        );
+
+        // Class select buttons
+        GameObject.Find("Programmer").GetComponent<Button>().onClick.AddListener(
+            () => GameManager.Instance.StartNewRun(PlayerClass.Programmer)
+        );
+        GameObject.Find("Hacker").GetComponent<Button>().onClick.AddListener(
+            () => GameManager.Instance.StartNewRun(PlayerClass.Hacker)
+        );
+        GameObject.Find("VibeCoder").GetComponent<Button>().onClick.AddListener(
+            () => GameManager.Instance.StartNewRun(PlayerClass.VibeCoder)
+        );
+    }
+
+    private void Start()
+    {
+        ShowScreen("menu");
     }
 
     [Header("Battle UI")]

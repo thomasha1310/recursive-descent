@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private RoomManager roomManager;
+    [SerializeField] private List<PlayerData> playerDatas; // assign in Inspector: Programmer, Hacker, VibeCoder
 
     [Header("Battle State")]
     private List<Enemy> currentEnemies = new List<Enemy>();
@@ -45,10 +46,15 @@ public class GameManager : MonoBehaviour
 
     public void StartNewRun(PlayerClass selectedClass)
     {
-        // Initialize player from class data
-        // Reset all run stats
-        // Tell RoomManager to start at room 0
-        // TODO
+        PlayerData data = playerDatas.Find(d => d.playerClass == selectedClass);
+        player.Initialize(0, data);
+
+        enemiesDefeated = 0;
+        totalDamageDealt = 0;
+        totalDamageTaken = 0;
+        cardsPlayed = 0;
+
+        uiManager.ShowScreen("map");
     }
 
     public void StartBattle(List<EnemyData> enemyDatas)
