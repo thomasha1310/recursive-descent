@@ -35,6 +35,10 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+
+        uiManager = FindFirstObjectByType<UIManager>();
+        roomManager = FindFirstObjectByType<RoomManager>();
+        player = FindFirstObjectByType<Player>();
     }
 
     // the GAME FLOW METHODS
