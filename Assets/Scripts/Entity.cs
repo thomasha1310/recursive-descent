@@ -1,107 +1,148 @@
-//the base class for the player and the enemy
-
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
-    [Header("Identity")]
-    [SerializeField] private string entityName;
-    [SerializeField] private string flavorText;
+    [SerializeField] private int id;
+    [SerializeField] private EntityData data;
 
-    [Header("Stats")]
-    [SerializeField] private int maxHealth;
     private int health;
     private int overconfidence;
 
-    [Header("Status Effects")]
-    protected List<Effect> activeEffects = new List<Effect>();
+    protected List<Effect> activeEffects = new();
 
-    // some properties
-
-    public string EntityName => entityName;
-    public string FlavorText => flavorText;
+    public int Id => id;
+    public EntityData Data => data;
     public int Health => health;
-    public int MaxHealth => maxHealth;
     public int Overconfidence => overconfidence;
 
     // Initialization
 
-    public virtual void Initialize(string name, int maxHP)
+    public virtual void Initialize(int id, EntityData entityData)
     {
-        // Set entityName, maxHealth, health
-        // Clear effects
-        // TODO
+        this.id = id;
+        data = entityData;
+        health = data.maxHealth;
     }
-
-    // health related stuff
 
     public void ReceiveAttack(float damage)
     {
-        // Check for Depressed (double damage)
-        // Check for BurntOut on attacker? (handled by caller)
-        // Subtract overconfidence first, then health
-        // Clamp health to 0
-        // TODO
+        float multiplier = 1.0f;
+        if (HasEffect(EffectType.Depressed) || HasEffect(EffectType.Analyzed))
+        {
+            multiplier += 1.0f;
+        }
+
+        int effectiveDamage = Mathf.RoundToInt(damage * multiplier);
+        if (effectiveDamage <= overconfidence)
+        {
+            overconfidence -= effectiveDamage;
+            return;
+        }
+
+        effectiveDamage -= overconfidence;
+        overconfidence = 0;
+        health -= effectiveDamage;
+        if (health < 0)
+        {
+            health = 0;
+            Die();
+        }
     }
 
     public void Heal(int amount)
     {
-        // Clamp to maxHealth
-        // TODO
+        health = Math.Min(data.maxHealth, health + amount);
     }
-
-    // Overconfidence related 
 
     public void GainOverconfidence(int amount)
     {
-        // TODO
+        overconfidence += amount;
     }
 
     public void ResetOverconfidence()
     {
-        // Called at start of each turn
-        // TODO
+        overconfidence = 0;
     }
-
-    // status effects
 
     public void ApplyEffect(EffectType type, int duration)
     {
-        // Check if effect already exists — refresh or stack?
-        // Add new Effect to activeEffects
-        // TODO
+        activeEffects.Add(new Effect(type, duration));
     }
 
     public bool HasEffect(EffectType type)
     {
-        // TODO
+        foreach (Effect effect in activeEffects)
+        {
+            if (effect.type == type)
+            {
+                return true;
+            }
+        }
         return false;
     }
 
+    // Called at the beginning of the Entity's turn.
     public void TickEffects()
     {
-        // Call Tick() on each effect
-        // Remove expired effects
-        // Handle BurntOut -> Motivated transition
-        // TODO
+        // Iterate backwards to safely remove expired effects while iterating.
+        for (int i = activeEffects.Count - 1; i >= 0; i--)
+        {
+            Effect effect = activeEffects[i];
+
+            switch (effect.type)
+            {
+                case EffectType.AISlop:
+                case EffectType.AgenticAI:
+                    if (UnityEngine.Random.Range(0.0f, 1.0f) < 0.5)
+                    {
+                        Heal(5);
+                    }
+                    else
+                    {
+                        ReceiveAttack(10);
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            effect.remainingTurns--;
+            if (effect.remainingTurns == 0)
+            {
+                if (effect.type == EffectType.BurntOut)
+                {
+                    ApplyEffect(EffectType.Motivated, 1);
+                }
+                activeEffects.RemoveAt(i);
+            }
+        }
     }
 
     public void ClearEffects()
     {
-        // TODO
+        activeEffects.Clear();
     }
 
     // modifes the damage dealt
 
     public float GetDamageMultiplier()
     {
-        // 2.0 if Motivated or Enraged
-        // 0.5 if BurntOut
-        // 1.5 if Strengthened
-        // 1.0 otherwise
-        // TODO
-        return 1.0f;
+        float multiplier = 1.0f;
+        if (HasEffect(EffectType.BurntOut))
+        {
+            multiplier -= 0.5f;
+        }
+        if (HasEffect(EffectType.Motivated) || HasEffect(EffectType.Enraged))
+        {
+            multiplier += 2.0f;
+        }
+        if (HasEffect(EffectType.Strengthened))
+        {
+            multiplier += 0.5f;
+        }
+        return multiplier;
     }
 
     public float CalculateOutgoingDamage(int baseDamage)
@@ -113,13 +154,17 @@ public abstract class Entity : MonoBehaviour
 
     public bool IsDead()
     {
-        // TODO
-        return false;
+        return health == 0;
     }
 
     public bool IsSuppressed()
     {
         // TODO
         return false;
+    }
+
+    protected virtual void Die()
+    {
+
     }
 }

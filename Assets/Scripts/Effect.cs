@@ -1,5 +1,3 @@
-// the effects class
-
 [System.Serializable]
 public class Effect
 {
@@ -8,19 +6,7 @@ public class Effect
 
     public Effect(EffectType type, int duration)
     {
-        // TODO
-    }
-
-    public void Tick()
-    {
-        // Decrement remainingTurns
-        // If BurntOut expires, apply Motivated
-        // TODO
-    }
-
-    public bool IsExpired()
-    {
-        // TODO
-        return false;
+        this.type = type;
+        remainingTurns = duration;
     }
 }

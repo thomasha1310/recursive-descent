@@ -3,7 +3,9 @@
 public enum EffectType
 {
     Depressed,      // Takes 100% more damage for 1 turn
+    Analyzed,
     AISlop,         // Random heal/damage for 3 turns
+    AgenticAI,
     Suppressed,     // Cannot act for 1 turn
     BurntOut,       // 50% less damage for 2 turns, then apply Motivated
     Motivated,      // 200% more damage for 1 turn
