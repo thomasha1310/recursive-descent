@@ -202,7 +202,7 @@ public class GameManager : MonoBehaviour
     {
         enemiesDefeated += currentEnemies.Count;
         // show reward or advance
-        List<Card> rewards = roomManager.GetCardRewards(3, false);
+        List<CardData> rewards = roomManager.GetCardRewards(3, false);
         if (rewards.Count > 0)
         {
             uiManager.ShowCardRewards(rewards, OnRewardCardPicked);
@@ -213,7 +213,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnRewardCardPicked(Card card)
+    private void OnRewardCardPicked(CardData card)
     {
         player.AddCardToDeck(card);
         roomManager.AdvanceToNextRoom();
