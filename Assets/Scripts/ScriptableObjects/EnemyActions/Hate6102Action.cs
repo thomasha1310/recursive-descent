@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy Actions/Hate6.102")]
-public class Hate6102 : EnemyActionData
+[CreateAssetMenu(menuName = "Enemy Actions/Hate6.102Action")]
+public class Hate6102Action : EnemyActionData
 {
     public override void PerformAction(Enemy self, GameManager manager)
     {
