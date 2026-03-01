@@ -18,18 +18,6 @@ public class EnemyAttack
     public bool effectTargetsSelf;          // Enraged targets self
 }
 
-[CreateAssetMenu(fileName = "NewEnemy", menuName = "Enemies/EnemyData")]
-public class EnemyData : ScriptableObject
-{
-    public string enemyName;
-    [TextArea] public string flavorText;
-    public Sprite artwork;
-    public int minHP;
-    public int maxHP;
-    public int hpBudgetCost;                // For room generation algorithm
-    public List<EnemyAttack> attacks;
-}
-
 //kind of define the AI of the enemy
 
 public class Enemy : Entity

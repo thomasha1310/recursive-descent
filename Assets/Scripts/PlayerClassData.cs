@@ -11,7 +11,7 @@ public class PlayerClassData : ScriptableObject
     public int maxHP;
     public Sprite portrait;
     [TextArea] public string description;
-    public List<CardData> startingDeck;
+    public List<Card> startingDeck;
 }
 
 // Create 3 assets in Unity Inspector:
