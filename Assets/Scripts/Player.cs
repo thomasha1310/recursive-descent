@@ -75,10 +75,11 @@ public class Player : Entity
         }
     }
 
-    public void PlayCard(Card card)
+    public void PlayCard(Card card, Entity target, GameManager manager)
     {
         hand.Remove(card);
         discardPile.Add(card);
+        card.PerformAction(this, target, manager);
     }
 
     public void ResetCards()
@@ -100,8 +101,6 @@ public class Player : Entity
     {
         drawPile.Add(card);
     }
-
-    // turn management
 
     public void StartTurn()
     {
