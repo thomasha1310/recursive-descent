@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d29bd3910d60a4684fe4336f17bcd9, type: 3}
   m_Name: Hacker
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
-  entityName: 
-  flavorText: 
-  maxHealth: 0
+  entityName: Hacker
+  flavorText: I use Kali, btw.
+  maxHealth: 75
   startingHand: []
   startingDeck: []
-  playerClass: 0
+  playerClass: 1
   avatar: {fileID: 0}

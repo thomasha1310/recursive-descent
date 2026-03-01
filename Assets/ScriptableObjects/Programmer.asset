@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d29bd3910d60a4684fe4336f17bcd9, type: 3}
   m_Name: Programmer
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
-  entityName: 
-  flavorText: 
-  maxHealth: 0
+  entityName: Programmer
+  flavorText: I use Vim, btw.
+  maxHealth: 80
   startingHand: []
   startingDeck: []
   playerClass: 0
-  avatar: {fileID: 0}
+  avatar: {fileID: -8660367416592716896, guid: 1598b28c943f8e0c3a4859cdb13f7893, type: 3}
