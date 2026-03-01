@@ -104,6 +104,11 @@ public abstract class Entity : MonoBehaviour
         return 1.0f;
     }
 
+    public float CalculateOutgoingDamage(int baseDamage)
+    {
+        return GetDamageMultiplier() * baseDamage;
+    }
+
     // check for special effects
 
     public bool IsDead()
