@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 863dce64180e0ec4ba0e0533f5fc6851, type: 3}
+  m_Name: SpiderData
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  entityName: Spider
+  flavorText: String cannot be converted to integer.
+  maxHealth: 40
+  actionPool:
+  - enemyActionData: {fileID: 11400000, guid: a0dae5816b2456648b606f398803bae1, type: 2}
+    weight: 100

@@ -26,16 +26,16 @@ public class Enemy : Entity
         int totalWeight = 0;
         foreach (var action in EnemyData.actionPool)
         {
-            totalWeight += action.Value;
+            totalWeight += action.weight;
         }
         int roll = Random.Range(0, totalWeight);
         totalWeight = 0;
         foreach (var action in EnemyData.actionPool)
         {
-            totalWeight += action.Value;
+            totalWeight += action.weight;
             if (totalWeight > roll)
             {
-                intent = action.Key;
+                intent = action.enemyActionData;
                 return;
             }
         }

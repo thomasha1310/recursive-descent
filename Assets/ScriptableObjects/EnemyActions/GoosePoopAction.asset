@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb911af6ad6c8a343a95940a2bdb9f12, type: 3}
-  m_Name: ChatGPTCard
-  m_EditorClassIdentifier: Assembly-CSharp::ChatGPTCard
-  cardName: 
-  energyCost: 0
-  flavorText: 
+  m_Script: {fileID: 11500000, guid: 1f1da998911791b44877af9477333b9d, type: 3}
+  m_Name: GoosePoopAction
+  m_EditorClassIdentifier: Assembly-CSharp::GoosePoopAction
+  actionName: Goose Poop
