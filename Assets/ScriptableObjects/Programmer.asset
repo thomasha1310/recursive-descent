@@ -15,7 +15,14 @@ MonoBehaviour:
   entityName: Programmer
   flavorText: I use Vim, btw.
   maxHealth: 80
-  startingHand: []
-  startingDeck: []
+  sprite: {fileID: 0}
+  startingDeck:
+  - {fileID: 11400000, guid: fbfec94318a234742952f17d9a1036d2, type: 2}
+  - {fileID: 11400000, guid: fbfec94318a234742952f17d9a1036d2, type: 2}
+  - {fileID: 11400000, guid: fbfec94318a234742952f17d9a1036d2, type: 2}
+  - {fileID: 11400000, guid: fbfec94318a234742952f17d9a1036d2, type: 2}
+  - {fileID: 11400000, guid: 3e29a61b49b103b45957d8ee91ad3ba1, type: 2}
+  - {fileID: 11400000, guid: 3e29a61b49b103b45957d8ee91ad3ba1, type: 2}
+  - {fileID: 11400000, guid: 8352c5e8a5bb2de4c99837cb0ae61948, type: 2}
   playerClass: 0
   avatar: {fileID: -8660367416592716896, guid: 1598b28c943f8e0c3a4859cdb13f7893, type: 3}

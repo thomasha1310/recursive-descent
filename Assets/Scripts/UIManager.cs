@@ -68,6 +68,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject cardButtonPrefab;
     [SerializeField] private Transform enemyContainer;
     [SerializeField] private GameObject enemyUIPrefab;
+
+    public Transform EnemyContainer => enemyContainer;
     [SerializeField] private Button endTurnButton;
 
     [Header("Boss Dialogue")]

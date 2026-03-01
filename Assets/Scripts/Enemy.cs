@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : Entity
 {
@@ -16,6 +17,14 @@ public class Enemy : Entity
     {
         base.Initialize(id, entityData);
         enemyData = entityData as EnemyData;
+
+        // set sprite if there's an Image component
+        Image img = GetComponent<Image>();
+        if (img != null && entityData.sprite != null)
+        {
+            img.sprite = entityData.sprite;
+        }
+
         DecideNextIntent();
     }
 

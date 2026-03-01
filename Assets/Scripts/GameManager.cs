@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         // spawn enemies
         for (int i = 0; i < enemyDatas.Count; i++)
         {
-            GameObject go = Instantiate(enemyPrefab);
+            GameObject go = Instantiate(enemyPrefab, uiManager.EnemyContainer);
             Enemy enemy = go.GetComponent<Enemy>();
             enemy.Initialize(i, enemyDatas[i]);
             currentEnemies.Add(enemy);
