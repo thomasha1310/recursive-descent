@@ -19,7 +19,7 @@ public class CardButtonUI : MonoBehaviour
         this.card = card;
         nameText.text = card.cardName;
         costText.text = card.energyCost.ToString();
-        if (descriptionText != null) descriptionText.text = card.flavorText;
+        if (descriptionText != null) descriptionText.text = card.description;
         if (cardIcon != null && card.icon != null) cardIcon.sprite = card.icon;
 
         // grey out if can't afford
