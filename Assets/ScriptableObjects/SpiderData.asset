@@ -15,6 +15,8 @@ MonoBehaviour:
   entityName: Spider
   flavorText: String cannot be converted to integer.
   maxHealth: 40
+  sprite: {fileID: 3873087697204469031, guid: 4f961c395be4e24a1b57f0bf47739ce6, type: 3}
   actionPool:
   - enemyActionData: {fileID: 11400000, guid: a0dae5816b2456648b606f398803bae1, type: 2}
     weight: 100
+  spawnScale: 1

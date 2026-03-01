@@ -15,6 +15,7 @@ MonoBehaviour:
   entityName: Timmy the Goose
   flavorText: ...
   maxHealth: 167
+  sprite: {fileID: 2090009548418324668, guid: 09d7fd6f81ed2502e978270a3f677278, type: 3}
   actionPool:
   - enemyActionData: {fileID: 11400000, guid: 92a53fa3a8a09ff489d95c04b1b7988d, type: 2}
     weight: 50
@@ -24,3 +25,4 @@ MonoBehaviour:
     weight: 50
   - enemyActionData: {fileID: 11400000, guid: b2cd78081052a4d4ab57ff1d5d706b27, type: 2}
     weight: 50
+  spawnScale: 1

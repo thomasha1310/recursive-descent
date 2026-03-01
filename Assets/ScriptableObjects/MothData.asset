@@ -15,8 +15,10 @@ MonoBehaviour:
   entityName: Moth
   flavorText: The system could not find the specified path.
   maxHealth: 32
+  sprite: {fileID: 4361804571333186455, guid: 784663b316f808c86b43ba51afe6f558, type: 3}
   actionPool:
   - enemyActionData: {fileID: 11400000, guid: 328c79fd064e4ee40a16e929287a41aa, type: 2}
     weight: 30
   - enemyActionData: {fileID: 11400000, guid: 7b594ee7665bdb247b5a08561bfcabde, type: 2}
     weight: 70
+  spawnScale: 1

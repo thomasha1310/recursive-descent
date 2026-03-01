@@ -15,8 +15,10 @@ MonoBehaviour:
   entityName: Cockroach
   flavorText: Segmentation fault (core dumped).
   maxHealth: 52
+  sprite: {fileID: -1927273192739970689, guid: 4acab928b042e3a58ac4152cef398bbd, type: 3}
   actionPool:
   - enemyActionData: {fileID: 11400000, guid: 3b67fe7d22f14cd428052b65707eebf0, type: 2}
     weight: 50
   - enemyActionData: {fileID: 11400000, guid: c7f8a413fde6f514ea5d1bc575f3a3d1, type: 2}
     weight: 50
+  spawnScale: 1

@@ -15,8 +15,10 @@ MonoBehaviour:
   entityName: Mosquito
   flavorText: Syntax error.
   maxHealth: 16
+  sprite: {fileID: -4874805957649004575, guid: 0ac3e6978b8cbef1fb0d4db6155964aa, type: 3}
   actionPool:
   - enemyActionData: {fileID: 11400000, guid: 508c5a0c79359a44e9e7f68652d1e108, type: 2}
     weight: 75
   - enemyActionData: {fileID: 11400000, guid: 8307895f2856a7040a777cd1773f3508, type: 2}
     weight: 25
+  spawnScale: 1
