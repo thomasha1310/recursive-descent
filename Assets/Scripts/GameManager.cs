@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
 
     // platying the cards
 
-    public void PlayCard(Card card, Enemy target)
+    public void PlayCard(CardData card, Enemy target)
     {
         // Check if player has enough energy
         // Spend energy

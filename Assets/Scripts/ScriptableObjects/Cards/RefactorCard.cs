@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Cards/RefactorCard")]
-public class RefactorCard : Card
+public class RefactorCard : CardData
 {
     public override void PerformAction(Player player, Entity target, GameManager manager)
     {
