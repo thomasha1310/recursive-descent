@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf0d39527489eee4f92729480cddc1af, type: 3}
   m_Name: BobaCard
   m_EditorClassIdentifier: Assembly-CSharp::BobaCard
-  cardName: 
+  cardName: Boba
   energyCost: 0
   flavorText: 
-  icon: {fileID: 0}
-  rarity: 0
+  icon: {fileID: 438446072116702144, guid: 464e2dbdf8fda3898a5140c5cd42045d, type: 3}
+  rarity: 1

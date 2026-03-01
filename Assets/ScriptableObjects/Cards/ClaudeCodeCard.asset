@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c4b23f21cc8ec45b999e983ceb67ea, type: 3}
   m_Name: ClaudeCodeCard
   m_EditorClassIdentifier: Assembly-CSharp::ClaudeCodeCard
-  cardName: 
-  energyCost: 0
+  cardName: Claude Code
+  energyCost: 3
   flavorText: 
   icon: {fileID: 0}
-  rarity: 0
+  rarity: 2

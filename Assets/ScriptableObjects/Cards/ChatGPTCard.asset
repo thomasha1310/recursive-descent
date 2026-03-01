@@ -16,3 +16,4 @@ MonoBehaviour:
   energyCost: 3
   flavorText: 
   icon: {fileID: 0}
+  rarity: 2

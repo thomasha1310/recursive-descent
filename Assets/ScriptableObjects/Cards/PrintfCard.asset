@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03a11719c2e93c448bd79a8b7fb3e0d, type: 3}
   m_Name: PrintfCard
   m_EditorClassIdentifier: Assembly-CSharp::PrintfCard
-  cardName: 
-  energyCost: 0
+  cardName: printf
+  energyCost: 1
   flavorText: 
   icon: {fileID: 0}
   rarity: 0

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f068dcc4d980ce04c89a769af11aa71d, type: 3}
   m_Name: StaticAnalysisCard
   m_EditorClassIdentifier: Assembly-CSharp::StaticAnalysisCard
-  cardName: 
-  energyCost: 0
+  cardName: Static Analysis
+  energyCost: 2
   flavorText: 
   icon: {fileID: 0}
-  rarity: 0
+  rarity: 1
