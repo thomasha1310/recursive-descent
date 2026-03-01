@@ -1,4 +1,4 @@
-# <p align="center">Recursive Descent</p>
+# ![Recursive Descent](Assets/PNG/Home_Screen.png)
 
 ## Contributing
 
