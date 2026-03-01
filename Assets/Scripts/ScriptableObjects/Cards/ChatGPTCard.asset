@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 468588dd5aefcfc4fb3cfc7ee011b80e, type: 3}
+  m_Name: ChatGPTCard
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  cardName: 
+  energyCost: 0
+  flavorText: 
+  artwork: {fileID: 0}
+  rarity: 0
+  targetType: 0
+  damage: 0
+  damageToAll: 0
+  healing: 0
+  overconfidenceGain: 0
+  cardsToDraw: 0
+  energyGain: 0
+  appliedEffect: 0
+  appliesEffect: 0
+  effectDuration: 0
+  effectTargetsSelf: 0
+  hasFailChance: 0
+  failChance: 0
+  failEffect: 0
+  failEffectDuration: 0
+  losesAllOverconfidence: 0

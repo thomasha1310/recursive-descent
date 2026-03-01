@@ -36,7 +36,7 @@ public abstract class Entity : MonoBehaviour
 
     // health related stuff
 
-    public void ReceiveAttack(int damage)
+    public void ReceiveAttack(float damage)
     {
         // Check for Depressed (double damage)
         // Check for BurntOut on attacker? (handled by caller)
