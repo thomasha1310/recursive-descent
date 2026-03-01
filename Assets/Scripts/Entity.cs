@@ -164,6 +164,6 @@ public abstract class Entity : MonoBehaviour
 
     protected virtual void Die()
     {
-
+        gameObject.SetActive(false);
     }
 }

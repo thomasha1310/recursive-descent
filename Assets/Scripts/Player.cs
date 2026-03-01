@@ -16,6 +16,7 @@ public class Player : Entity
     // properties
 
     public int Energy => energy;
+    public PlayerData PlayerData => playerData;
     public List<Card> Hand => hand;
     public List<Card> DrawPile => drawPile;
     public List<Card> DiscardPile => discardPile;
@@ -75,10 +76,11 @@ public class Player : Entity
         }
     }
 
-    public void PlayCard(Card card)
+    public void PlayCard(Card card, Entity target, GameManager manager)
     {
         hand.Remove(card);
         discardPile.Add(card);
+        card.PerformAction(this, target, manager);
     }
 
     public void ResetCards()
@@ -100,8 +102,6 @@ public class Player : Entity
     {
         drawPile.Add(card);
     }
-
-    // turn management
 
     public void StartTurn()
     {
