@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0f777533f3c51b43afbb13e7e729553, type: 3}
-  m_Name: BananaCard
-  m_EditorClassIdentifier: Assembly-CSharp::BananaCard
-  cardName: 
-  energyCost: 0
-  flavorText: 
-  icon: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 26b05ae7e11d831479726004277d20e7, type: 3}
+  m_Name: NullPointerExceptionAction
+  m_EditorClassIdentifier: Assembly-CSharp::NullPointerExceptionAction
+  actionName: Null Pointer Exception
