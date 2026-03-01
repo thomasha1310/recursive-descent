@@ -16,6 +16,7 @@ public class Player : Entity
     // properties
 
     public int Energy => energy;
+    public PlayerData PlayerData => playerData;
     public List<Card> Hand => hand;
     public List<Card> DrawPile => drawPile;
     public List<Card> DiscardPile => discardPile;
