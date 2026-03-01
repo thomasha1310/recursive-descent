@@ -9,16 +9,24 @@ public class CardButtonUI : MonoBehaviour
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text costText;
     [SerializeField] private TMP_Text descriptionText;
-    [SerializeField] private Image cardBackground;
+    [SerializeField] private Image cardIcon;
     [SerializeField] private Button button;
 
-    private readonly CardData card;
+    private CardData card;
 
-    public void Setup(CardData card, bool canAfford)
+    public void Setup(CardData card, bool canAfford, System.Action<CardData> onClick)
     {
-        // Set texts from card data
-        // Grey out if canAfford is false
-        // TODO
+        this.card = card;
+        nameText.text = card.cardName;
+        costText.text = card.energyCost.ToString();
+        if (descriptionText != null) descriptionText.text = card.flavorText;
+        if (cardIcon != null && card.icon != null) cardIcon.sprite = card.icon;
+
+        // grey out if can't afford
+        button.interactable = canAfford;
+
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(() => onClick(card));
     }
 
     public CardData GetCard()

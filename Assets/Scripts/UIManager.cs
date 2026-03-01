@@ -45,6 +45,13 @@ public class UIManager : MonoBehaviour
         GameObject.Find("VibeCoder").GetComponent<Button>().onClick.AddListener(
             () => GameManager.Instance.StartNewRun(PlayerClass.VibeCoder)
         );
+
+        // End turn button
+        endTurnButton = GameObject.Find("EndTurnButton")?.GetComponent<Button>();
+        if (endTurnButton != null)
+        {
+            endTurnButton.onClick.AddListener(() => GameManager.Instance.OnEndTurnPressed());
+        }
     }
 
     private void Start()
@@ -76,7 +83,6 @@ public class UIManager : MonoBehaviour
 
     public void ShowScreen(string screenName)
     {
-        // Hide all screens, show the requested one
         mainMenuScreen.SetActive(false);
         classSelectScreen.SetActive(false);
         mapSelectScreen.SetActive(false);
@@ -101,96 +107,128 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // diplaying teh battle UI
+    // battle UI
 
     public void UpdatePlayerUI(Player player)
     {
-        // Update HP text/bar, energy, overconfidence
-        // Update active effects display
-        // TODO
+        if (playerHPText != null)
+            playerHPText.text = player.Health + " / " + player.Data.maxHealth;
+        if (playerHPBar != null)
+        {
+            playerHPBar.maxValue = player.Data.maxHealth;
+            playerHPBar.value = player.Health;
+        }
+        if (energyText != null)
+            energyText.text = "Energy: " + player.Energy;
+        if (overconfidenceText != null)
+            overconfidenceText.text = "Shield: " + player.Overconfidence;
     }
 
     public void UpdateEnemyUI(List<Enemy> enemies)
     {
-        // Update each enemy's HP, intent, effects
-        // Remove dead enemies from display
-        // TODO
+        // for now just log — full enemy UI needs enemyUIPrefab setup
+        // TODO: instantiate enemy UI panels if not done yet
     }
 
     public void RefreshHand(List<CardData> hand, System.Action<CardData> onCardClicked)
     {
-        // Clear existing card buttons
-        // For each card in hand:
-        //   Instantiate cardButtonPrefab in cardHandContainer
-        //   Set card name, cost, description text
-        //   Add onClick listener → onCardClicked(card)
-        //   Grey out if not enough energy
-        // TODO
+        // clear old cards
+        foreach (Transform child in cardHandContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
+        int playerEnergy = GameManager.Instance.CurrentPlayer.Energy;
+
+        foreach (CardData card in hand)
+        {
+            GameObject go = Instantiate(cardButtonPrefab, cardHandContainer);
+            CardButtonUI cardUI = go.GetComponent<CardButtonUI>();
+            bool canAfford = playerEnergy >= card.energyCost;
+            cardUI.Setup(card, canAfford, onCardClicked);
+        }
     }
 
     public void HighlightEnemies(System.Action<Enemy> onEnemyClicked)
     {
-        // Show targeting indicators on enemies
-        // Set onClick for each enemy → onEnemyClicked(enemy)
-        // Called after player clicks a single-target card
-        // TODO
+        // for now, auto-target first alive enemy since enemy UI isn't built yet
+        List<Enemy> enemies = GameManager.Instance.CurrentEnemies;
+        foreach (Enemy enemy in enemies)
+        {
+            if (!enemy.IsDead())
+            {
+                onEnemyClicked(enemy);
+                return;
+            }
+        }
     }
 
     public void CancelTargeting()
     {
-        // Remove targeting indicators
-        // TODO
+        // nothing to clean up until enemy UI targeting is built
     }
 
-    // timmy's idalogues
+    // timmy's dialogues
 
     public void ShowBossDialogue(string quote)
     {
-        // Display Timmy's quote with some flair
-        // Maybe flash the text or shake the screen
-        // TODO
+        if (bossDialogueText != null)
+            bossDialogueText.text = quote;
     }
 
     // reward screen
 
     public void ShowCardRewards(List<CardData> cards, System.Action<CardData> onCardPicked)
     {
-        // Display 3 cards to choose from
-        // onClick → onCardPicked(card) → advance room
-        // TODO
+        ShowScreen("reward");
+
+        // clear old reward cards
+        if (rewardCardContainer != null)
+        {
+            foreach (Transform child in rewardCardContainer)
+            {
+                Destroy(child.gameObject);
+            }
+
+            foreach (CardData card in cards)
+            {
+                GameObject go = Instantiate(cardButtonPrefab, rewardCardContainer);
+                CardButtonUI cardUI = go.GetComponent<CardButtonUI>();
+                cardUI.Setup(card, true, onCardPicked);
+            }
+        }
     }
 
-    // the bonfire room
+    // bonfire room
 
     public void ShowBonfire(System.Action onRest)
     {
-        // Show "Rest" button
-        // onClick → onRest() (heals and advances)
-        // TODO
+        // find and wire the rest button inside the bonfire screen
+        Button restButton = bonfireScreen.GetComponentInChildren<Button>();
+        if (restButton != null)
+        {
+            restButton.onClick.RemoveAllListeners();
+            restButton.onClick.AddListener(() => onRest());
+        }
     }
 
-    // win/loss screen
+    // win/loss screens
 
     public void ShowVictoryScreen(RunStats stats)
     {
-        // Display run stats
-        // Show "Back to Menu" button
-        // TODO
+        ShowScreen("victory");
+        if (statsText != null)
+            statsText.text = "Enemies Defeated: " + stats.enemiesDefeated
+                + "\nDamage Dealt: " + stats.totalDamageDealt
+                + "\nCards Played: " + stats.cardsPlayed;
     }
 
     public void ShowGameOverScreen(RunStats stats)
     {
-        // Display run stats
-        // Show "Back to Menu" button
-        // TODO
-    }
-
-    // shwoing the damage number
-
-    public void ShowDamageNumber(Vector3 position, int damage)
-    {
-        // Optional: floating damage text
-        // Skip this if running low on time
-        // TODO
+        ShowScreen("gameOver");
+        if (statsText != null)
+            statsText.text = "Enemies Defeated: " + stats.enemiesDefeated
+                + "\nDamage Dealt: " + stats.totalDamageDealt
+                + "\nCards Played: " + stats.cardsPlayed;
     }
 }
