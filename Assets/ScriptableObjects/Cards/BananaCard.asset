@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BananaCard
   cardName: Banana
   energyCost: 0
-  flavorText: 
+  description: Apply Strengthened (+50% DMG) to self for 1 turn.
   icon: {fileID: 7381965769198725172, guid: 6eacccb7a8665cbb5baac294a0ef4945, type: 3}
+  rarity: 0

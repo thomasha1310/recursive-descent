@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CrashOutCard
   cardName: Crash Out
   energyCost: 0
-  flavorText: 
+  description: Lose all Overconfidence. Apply Burnt Out to self.
   icon: {fileID: 0}
   rarity: 1

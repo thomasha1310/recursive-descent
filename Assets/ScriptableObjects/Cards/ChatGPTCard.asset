@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChatGPTCard
   cardName: ChatGPT
   energyCost: 3
-  flavorText: 
+  description: Deal 20 DMG on success. Apply AI Slop to self on failure.
   icon: {fileID: 0}
   rarity: 2

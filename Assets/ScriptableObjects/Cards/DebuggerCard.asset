@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DebuggerCard
   cardName: Debugger
   energyCost: 1
-  flavorText: 
+  description: Deal 6 DMG.
   icon: {fileID: 0}
   rarity: 0

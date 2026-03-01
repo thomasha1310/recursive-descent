@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BobaCard
   cardName: Boba
   energyCost: 0
-  flavorText: 
+  description: Heal for 50% of max HP.
   icon: {fileID: 438446072116702144, guid: 464e2dbdf8fda3898a5140c5cd42045d, type: 3}
   rarity: 1

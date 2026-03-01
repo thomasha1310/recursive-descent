@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClaudeCodeCard
   cardName: Claude Code
   energyCost: 3
-  flavorText: 
+  description: Apply Agentic AI to enemy on success. Apply AI Slop to self on failure.
   icon: {fileID: 0}
   rarity: 2

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SnackBreakCard
   cardName: Snack Break
   energyCost: 1
-  flavorText: 
+  description: Draw 2 cards. Gain 5 Overconfidence.
   icon: {fileID: 0}
   rarity: 1

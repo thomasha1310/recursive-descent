@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WhiteMonsterCard
   cardName: White Monster
   energyCost: 0
-  flavorText: 
+  description: Apply Motivated (+200% DMG) for 1 turn.
   icon: {fileID: 0}
   rarity: 2
