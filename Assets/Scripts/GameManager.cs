@@ -14,8 +14,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<PlayerData> playerDatas; // assign in Inspector: Programmer, Hacker, VibeCoder
 
     [Header("Battle State")]
+    [SerializeField] private GameObject enemyPrefab;
     private List<Enemy> currentEnemies = new List<Enemy>();
     private bool isPlayerTurn;
+    private Card selectedCard;
 
     [Header("Run Stats — for end screen")]
     private int enemiesDefeated;
@@ -63,92 +65,177 @@ public class GameManager : MonoBehaviour
 
     public void StartBattle(List<EnemyData> enemyDatas)
     {
-        // Instantiate enemies from data
-        // Initialize each enemy
-        // Start player turn
-        // TODO
+        // clean up previous enemies
+        foreach (Enemy e in currentEnemies)
+        {
+            if (e != null) Destroy(e.gameObject);
+        }
+        currentEnemies.Clear();
+        selectedCard = null;
+
+        // spawn enemies
+        for (int i = 0; i < enemyDatas.Count; i++)
+        {
+            GameObject go = Instantiate(enemyPrefab);
+            Enemy enemy = go.GetComponent<Enemy>();
+            enemy.Initialize(i, enemyDatas[i]);
+            currentEnemies.Add(enemy);
+        }
+
+        uiManager.ShowScreen("battle");
+        StartPlayerTurn();
     }
 
     // different turns
 
     public void StartPlayerTurn()
     {
-        // player.StartTurn()
-        // isPlayerTurn = true
-        // Update UI
-        // TODO
+        isPlayerTurn = true;
+        selectedCard = null;
+        player.StartTurn();
+        uiManager.UpdatePlayerUI(player);
+        uiManager.UpdateEnemyUI(currentEnemies);
+        uiManager.RefreshHand(player.Hand, OnCardClicked);
     }
 
     public void OnEndTurnPressed()
     {
-        // isPlayerTurn = false
-        // player.DiscardHand()
-        // Start enemy turn
-        // TODO
+        if (!isPlayerTurn) return;
+        isPlayerTurn = false;
+        selectedCard = null;
+        uiManager.CancelTargeting();
+
+        // discard remaining hand
+        while (player.Hand.Count > 0)
+        {
+            Card c = player.Hand[0];
+            player.Hand.RemoveAt(0);
+            player.DiscardPile.Add(c);
+        }
+
+        StartEnemyTurn();
     }
 
     public void StartEnemyTurn()
     {
-        // For each enemy (if not dead, not suppressed):
-        //   enemy.ExecuteAction(player)
-        //   Update UI
-        //   Check if player is dead
-        // After all enemies act, start player turn
-        // TODO
+        for (int i = currentEnemies.Count - 1; i >= 0; i--)
+        {
+            Enemy enemy = currentEnemies[i];
+            if (enemy.IsDead()) continue;
+
+            enemy.TickEffects();
+            enemy.TakeAction(this);
+            uiManager.UpdatePlayerUI(player);
+
+            if (player.IsDead())
+            {
+                OnPlayerDied();
+                return;
+            }
+        }
+
+        uiManager.UpdateEnemyUI(currentEnemies);
+        CheckBattleEnd();
+        if (!player.IsDead() && !AllEnemiesDead())
+        {
+            StartPlayerTurn();
+        }
     }
 
-    // platying the cards
+    // card selection flow
+
+    private void OnCardClicked(Card card)
+    {
+        if (!isPlayerTurn) return;
+        if (player.Energy < card.energyCost) return;
+
+        selectedCard = card;
+        // for cards that need a target, highlight enemies
+        uiManager.HighlightEnemies(OnEnemyClicked);
+    }
+
+    private void OnEnemyClicked(Enemy target)
+    {
+        if (selectedCard == null) return;
+        PlayCard(selectedCard, target);
+        selectedCard = null;
+        uiManager.CancelTargeting();
+    }
 
     public void PlayCard(Card card, Enemy target)
     {
-        // Check if player has enough energy
-        // Spend energy
-        // Resolve card effects:
-        //   - Handle RNG cards (failChance check)
-        //   - Apply damage (single or all enemies)
-        //   - Apply healing
-        //   - Apply status effects
-        //   - Draw cards
-        //   - Gain energy
-        //   - Gain overconfidence
-        //   - Special: Crash Out (lose all overconfidence)
-        // Move card from hand to discard
-        // Update stats (cardsPlayed++, totalDamageDealt)
-        // Check if all enemies are dead
-        // Update UI
-        // TODO
+        if (player.Energy < card.energyCost) return;
+        player.ModifyEnergy(-card.energyCost);
+
+        // card does its own effect logic
+        player.PlayCard(card, target, this);
+        cardsPlayed++;
+
+        uiManager.UpdatePlayerUI(player);
+        uiManager.UpdateEnemyUI(currentEnemies);
+
+        CheckBattleEnd();
+        if (!AllEnemiesDead() && !player.IsDead())
+        {
+            uiManager.RefreshHand(player.Hand, OnCardClicked);
+        }
     }
 
-    // manage the battle (whether it ended and stuff)
+    // manage the battle
+
+    private bool AllEnemiesDead()
+    {
+        foreach (Enemy e in currentEnemies)
+        {
+            if (!e.IsDead()) return false;
+        }
+        return true;
+    }
 
     private void CheckBattleEnd()
     {
-        // If all enemies dead → OnBattleWon()
-        // If player dead → OnPlayerDied()
-        // TODO
+        if (AllEnemiesDead()) OnBattleWon();
+        else if (player.IsDead()) OnPlayerDied();
     }
 
     private void OnBattleWon()
     {
-        // Increment enemiesDefeated
-        // Show card reward screen (unless boss)
-        // If boss → show victory screen
-        // TODO
+        enemiesDefeated += currentEnemies.Count;
+        // show reward or advance
+        List<Card> rewards = roomManager.GetCardRewards(3, false);
+        if (rewards.Count > 0)
+        {
+            uiManager.ShowCardRewards(rewards, OnRewardCardPicked);
+        }
+        else
+        {
+            roomManager.AdvanceToNextRoom();
+        }
+    }
+
+    private void OnRewardCardPicked(Card card)
+    {
+        player.AddCardToDeck(card);
+        roomManager.AdvanceToNextRoom();
     }
 
     private void OnPlayerDied()
     {
-        // Show game over screen with stats
-        // TODO
+        uiManager.ShowGameOverScreen(GetRunStats());
     }
 
     // --- Stats ---
 
     public RunStats GetRunStats()
     {
-        // Return stats for end screen
-        // TODO
-        return new RunStats();
+        return new RunStats
+        {
+            enemiesDefeated = this.enemiesDefeated,
+            totalDamageDealt = this.totalDamageDealt,
+            totalDamageTaken = this.totalDamageTaken,
+            cardsPlayed = this.cardsPlayed,
+            playerClass = player.PlayerData.playerClass
+        };
     }
 }
 
