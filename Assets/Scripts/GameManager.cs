@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
         uiManager.CancelTargeting();
     }
 
-    public void PlayCard(Card card, Enemy target)
+    public void PlayCard(CardData card, Enemy target)
     {
         if (player.Energy < card.energyCost) return;
         player.ModifyEnergy(-card.energyCost);

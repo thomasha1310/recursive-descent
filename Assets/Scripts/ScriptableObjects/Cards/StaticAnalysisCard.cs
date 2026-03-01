@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Cards/StaticAnalysisCard")]
-public class StaticAnalysisCard : Card
+public class StaticAnalysisCard : CardData
 {
     public override void PerformAction(Player player, Entity target, GameManager manager)
     {

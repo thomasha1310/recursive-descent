@@ -117,7 +117,7 @@ public class UIManager : MonoBehaviour
         // TODO
     }
 
-    public void RefreshHand(List<Card> hand, System.Action<Card> onCardClicked)
+    public void RefreshHand(List<CardData> hand, System.Action<CardData> onCardClicked)
     {
         // Clear existing card buttons
         // For each card in hand:
@@ -153,7 +153,7 @@ public class UIManager : MonoBehaviour
 
     // reward screen
 
-    public void ShowCardRewards(List<Card> cards, System.Action<Card> onCardPicked)
+    public void ShowCardRewards(List<CardData> cards, System.Action<CardData> onCardPicked)
     {
         // Display 3 cards to choose from
         // onClick → onCardPicked(card) → advance room

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Cards/BreakpointCard")]
-public class BreakpointCard : Card
+public class BreakpointCard : CardData
 {
     public override void PerformAction(Player player, Entity target, GameManager manager)
     {

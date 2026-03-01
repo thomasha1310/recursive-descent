@@ -9,17 +9,17 @@ public class Player : Entity
     private int energy;
     private const int MAX_ENERGY = 3;
 
-    private readonly List<Card> hand = new();
-    private readonly List<Card> drawPile = new();
-    private readonly List<Card> discardPile = new();
+    private readonly List<CardData> hand = new();
+    private readonly List<CardData> drawPile = new();
+    private readonly List<CardData> discardPile = new();
 
     // properties
 
     public int Energy => energy;
     public PlayerData PlayerData => playerData;
-    public List<Card> Hand => hand;
-    public List<Card> DrawPile => drawPile;
-    public List<Card> DiscardPile => discardPile;
+    public List<CardData> Hand => hand;
+    public List<CardData> DrawPile => drawPile;
+    public List<CardData> DiscardPile => discardPile;
 
     // initialization
 
@@ -28,7 +28,7 @@ public class Player : Entity
         base.Initialize(id, entityData);
         playerData = entityData as PlayerData;
         energy = 3;
-        foreach (Card card in playerData.startingDeck)
+        foreach (CardData card in playerData.startingDeck)
         {
             drawPile.Add(card);
         }
@@ -51,7 +51,7 @@ public class Player : Entity
         {
             if (drawPile.Count == 0)
             {
-                foreach (Card card in discardPile)
+                foreach (CardData card in discardPile)
                 {
                     drawPile.Add(card);
                 }
@@ -65,7 +65,7 @@ public class Player : Entity
         }
     }
 
-    private void Shuffle(List<Card> cards)
+    private void Shuffle(List<CardData> cards)
     {
         int n = cards.Count;
         while (n > 1)
@@ -76,7 +76,7 @@ public class Player : Entity
         }
     }
 
-    public void PlayCard(Card card, Entity target, GameManager manager)
+    public void PlayCard(CardData card, Entity target, GameManager manager)
     {
         hand.Remove(card);
         discardPile.Add(card);
@@ -85,11 +85,11 @@ public class Player : Entity
 
     public void ResetCards()
     {
-        foreach (Card card in hand)
+        foreach (CardData card in hand)
         {
             drawPile.Add(card);
         }
-        foreach (Card card in discardPile)
+        foreach (CardData card in discardPile)
         {
             drawPile.Add(card);
         }
@@ -98,7 +98,7 @@ public class Player : Entity
         Shuffle(drawPile);
     }
 
-    public void AddCardToDeck(Card card)
+    public void AddCardToDeck(CardData card)
     {
         drawPile.Add(card);
     }

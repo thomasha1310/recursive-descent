@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Cards/DebuggerCard")]
-public class DebuggerCard : Card
+public class DebuggerCard : CardData
 {
     public override void PerformAction(Player player, Entity target, GameManager manager)
     {

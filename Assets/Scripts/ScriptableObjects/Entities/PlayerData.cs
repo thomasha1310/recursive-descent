@@ -4,8 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Blueprint/PlayerData")]
 public class PlayerData : EntityData
 {
-    public List<Card> startingHand;
-    public List<Card> startingDeck;
+    public List<CardData> startingHand;
+    public List<CardData> startingDeck;
     public PlayerClass playerClass;
     public Sprite avatar;
 

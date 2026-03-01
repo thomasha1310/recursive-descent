@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Card : ScriptableObject
+public abstract class CardData : ScriptableObject
 {
     public string cardName;
     public int energyCost;
