@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f486f2c797aebad4384d925bf93b0f3d, type: 3}
   m_Name: CoffeeCard
   m_EditorClassIdentifier: Assembly-CSharp::CoffeeCard
-  cardName: 
+  cardName: Coffee
   energyCost: 0
   flavorText: 
   icon: {fileID: 0}

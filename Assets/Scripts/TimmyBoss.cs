@@ -1,5 +1,6 @@
 //timmy the bossss
 
+using TMPro;
 using UnityEngine;
 
 public class TimmyBoss : Enemy
@@ -19,12 +20,21 @@ public class TimmyBoss : Enemy
         "TABS OR SPACES? NEITHER. ONLY PAIN.",
     };
 
+    private TextMeshProUGUI speech;
+
+    protected virtual void Awake()
+    {
+        speech = GetComponentInChildren<TextMeshProUGUI>();
+    }
+
     public string GetRandomQuote()
     {
         return timmyQuotes[Random.Range(0, timmyQuotes.Length)];
     }
 
-    // Override ExecuteAction to show a quote each turn
-    // Call base.ExecuteAction() for the actual attack logic
-    // Display quote in UI via GameManager
+    public new void TakeAction(GameManager manager)
+    {
+        base.TakeAction(manager);
+        speech.text = GetRandomQuote();
+    }
 }

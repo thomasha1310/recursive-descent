@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed26c0bd640a924f825c1eef4773435, type: 3}
   m_Name: RefactorCard
   m_EditorClassIdentifier: Assembly-CSharp::RefactorCard
-  cardName: 
-  energyCost: 0
+  cardName: Refactor
+  energyCost: 1
   flavorText: 
   icon: {fileID: 0}
   rarity: 0

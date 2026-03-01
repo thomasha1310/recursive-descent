@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe67314353e3a9d4dae42848f470dc0b, type: 3}
   m_Name: CodeProfilerCard
   m_EditorClassIdentifier: Assembly-CSharp::CodeProfilerCard
-  cardName: 
-  energyCost: 0
+  cardName: Code Profiler
+  energyCost: 1
   flavorText: 
   icon: {fileID: 0}
   rarity: 0

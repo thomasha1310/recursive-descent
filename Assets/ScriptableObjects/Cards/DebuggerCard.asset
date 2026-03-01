@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ab8e60bebdb8cc45b4a1f9e62e01ac4, type: 3}
   m_Name: DebuggerCard
   m_EditorClassIdentifier: Assembly-CSharp::DebuggerCard
-  cardName: 
-  energyCost: 0
+  cardName: Debugger
+  energyCost: 1
   flavorText: 
   icon: {fileID: 0}
   rarity: 0

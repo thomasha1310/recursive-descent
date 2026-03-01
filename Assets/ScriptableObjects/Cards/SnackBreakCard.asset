@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae29a61797819d4f8afad957cd65d77, type: 3}
   m_Name: SnackBreakCard
   m_EditorClassIdentifier: Assembly-CSharp::SnackBreakCard
-  cardName: 
-  energyCost: 0
+  cardName: Snack Break
+  energyCost: 1
   flavorText: 
   icon: {fileID: 0}
-  rarity: 0
+  rarity: 1

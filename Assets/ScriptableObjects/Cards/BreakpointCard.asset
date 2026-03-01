@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ccfbffb0d97f14d9b352aea89db8c4, type: 3}
   m_Name: BreakpointCard
   m_EditorClassIdentifier: Assembly-CSharp::BreakpointCard
-  cardName: 
-  energyCost: 0
+  cardName: Breakpoint
+  energyCost: 1
   flavorText: 
   icon: {fileID: 0}
   rarity: 0

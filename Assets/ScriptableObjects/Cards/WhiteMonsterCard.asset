@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ce9d542050538498fb3a012867451f, type: 3}
   m_Name: WhiteMonsterCard
   m_EditorClassIdentifier: Assembly-CSharp::WhiteMonsterCard
-  cardName: 
+  cardName: White Monster
   energyCost: 0
   flavorText: 
   icon: {fileID: 0}
-  rarity: 0
+  rarity: 2
