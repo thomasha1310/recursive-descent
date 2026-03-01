@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class RoomManager : MonoBehaviour
 {
-    [Header("Enemy Data — assign in Inspector")]
+    [Header("Enemy Data")]
     [SerializeField] private EnemyData mosquitoData;
     [SerializeField] private EnemyData cockroachData;
     [SerializeField] private EnemyData spiderData;
@@ -16,25 +16,20 @@ public class RoomManager : MonoBehaviour
     [Header("Card Reward Pool")]
     [SerializeField] private List<CardData> rewardPool;
 
+    [Header("Map Buttons in Order")]
+    [SerializeField] private Button[] roomButtons;
+
     private int currentRoomIndex = 0;
-
-    // button names in order matching the room sequence
-    private readonly string[] roomButtonNames = {
-        "battle_1", "battle_2", "chest", "battle_3", "battle_4", "bonfire", "boss"
-    };
-
-    private Button[] roomButtons;
 
     private void Awake()
     {
-        roomButtons = new Button[roomButtonNames.Length];
-        for (int i = 0; i < roomButtonNames.Length; i++)
+        if (roomButtons == null) return;
+
+        for (int i = 0; i < roomButtons.Length; i++)
         {
-            GameObject go = GameObject.Find(roomButtonNames[i]);
-            if (go != null)
+            if (roomButtons[i] != null)
             {
-                roomButtons[i] = go.GetComponent<Button>();
-                int index = i; // capture for closure
+                int index = i;
                 roomButtons[i].onClick.AddListener(() => OnRoomButtonClicked(index));
             }
         }
@@ -80,10 +75,7 @@ public class RoomManager : MonoBehaviour
             case 4: // battle_4: 1 moth
                 GameManager.Instance.StartBattle(new List<EnemyData> { mothData });
                 break;
-            case 5: // bonfire: heal to full
-                GameManager.Instance.ShowBonfire();
-                break;
-            case 6: // boss: Timmy
+            case 5: // boss: Timmy
                 GameManager.Instance.StartBattle(new List<EnemyData> { bossData });
                 break;
         }
@@ -92,7 +84,7 @@ public class RoomManager : MonoBehaviour
     public void AdvanceToNextRoom()
     {
         currentRoomIndex++;
-        if (currentRoomIndex >= roomButtonNames.Length)
+        if (currentRoomIndex >= roomButtons.Length)
         {
             GameManager.Instance.OnVictory();
             return;
@@ -105,8 +97,8 @@ public class RoomManager : MonoBehaviour
     {
         if (rewardPool == null || rewardPool.Count == 0) return new List<CardData>();
 
-        List<CardData> rewards = new List<CardData>();
-        List<CardData> pool = new List<CardData>(rewardPool);
+        List<CardData> rewards = new();
+        List<CardData> pool = new(rewardPool);
 
         for (int i = 0; i < count && pool.Count > 0; i++)
         {

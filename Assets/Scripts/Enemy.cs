@@ -11,7 +11,23 @@ public class Enemy : Entity
     public EnemyData EnemyData => enemyData;
     public EnemyActionData Intent => intent;
 
-    // setup
+
+    [SerializeField] private UnityEngine.UI.Slider hpBar;
+    [SerializeField] private TMPro.TMP_Text hpText;
+
+    public void UpdateHealthUI()
+    {
+        if (hpBar != null)
+        {
+            hpBar.maxValue = Data.maxHealth;
+            hpBar.value = Health;
+        }
+
+        if (hpText != null)
+        {
+            hpText.text = Health + " / " + Data.maxHealth;
+        }
+    }
 
     public override void Initialize(int id, EntityData entityData)
     {

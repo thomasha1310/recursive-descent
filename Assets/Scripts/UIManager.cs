@@ -13,45 +13,25 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject mapSelectScreen;
     [SerializeField] private GameObject battleScreen;
     [SerializeField] private GameObject rewardScreen;
-    [SerializeField] private GameObject bonfireScreen;
     [SerializeField] private GameObject chestScreen;
     [SerializeField] private GameObject victoryScreen;
     [SerializeField] private GameObject gameOverScreen;
 
     private void Awake()
     {
-        mainMenuScreen = GameObject.Find("MainMenu");
-        classSelectScreen = GameObject.Find("SelectCharacter");
-        mapSelectScreen = GameObject.Find("Map");
-        battleScreen = GameObject.Find("Battle");
-        rewardScreen = GameObject.Find("Reward");
-        bonfireScreen = GameObject.Find("Bonfire");
-        chestScreen = GameObject.Find("Chest");
-        victoryScreen = GameObject.Find("Victory");
-        gameOverScreen = GameObject.Find("GameOver");
+        GameObject startBtn = GameObject.Find("Start");
+        startBtn?.GetComponent<Button>().onClick.AddListener(() => GameManager.Instance.OnStartButtonPressed());
 
-        // Start button
-        GameObject.Find("Start").GetComponent<Button>().onClick.AddListener(
-            () => GameManager.Instance.OnStartButtonPressed()
-        );
+        GameObject progBtn = GameObject.Find("Programmer");
+        progBtn?.GetComponent<Button>().onClick.AddListener(() => GameManager.Instance.StartNewRun(PlayerClass.Programmer));
 
-        // Class select buttons
-        GameObject.Find("Programmer").GetComponent<Button>().onClick.AddListener(
-            () => GameManager.Instance.StartNewRun(PlayerClass.Programmer)
-        );
-        GameObject.Find("Hacker").GetComponent<Button>().onClick.AddListener(
-            () => GameManager.Instance.StartNewRun(PlayerClass.Hacker)
-        );
-        GameObject.Find("VibeCoder").GetComponent<Button>().onClick.AddListener(
-            () => GameManager.Instance.StartNewRun(PlayerClass.VibeCoder)
-        );
+        GameObject hackBtn = GameObject.Find("Hacker");
+        hackBtn?.GetComponent<Button>().onClick.AddListener(() => GameManager.Instance.StartNewRun(PlayerClass.Hacker));
 
-        // End turn button
-        endTurnButton = GameObject.Find("EndTurnButton")?.GetComponent<Button>();
-        if (endTurnButton != null)
-        {
-            endTurnButton.onClick.AddListener(() => GameManager.Instance.OnEndTurnPressed());
-        }
+        GameObject vibeBtn = GameObject.Find("VibeCoder");
+        vibeBtn?.GetComponent<Button>().onClick.AddListener(() => GameManager.Instance.StartNewRun(PlayerClass.VibeCoder));
+
+        endTurnButton?.onClick.AddListener(() => GameManager.Instance.OnEndTurnPressed());
     }
 
     private void Start()
@@ -90,7 +70,6 @@ public class UIManager : MonoBehaviour
         mapSelectScreen.SetActive(false);
         battleScreen.SetActive(false);
         rewardScreen.SetActive(false);
-        bonfireScreen.SetActive(false);
         chestScreen.SetActive(false);
         victoryScreen.SetActive(false);
         gameOverScreen.SetActive(false);
@@ -102,7 +81,6 @@ public class UIManager : MonoBehaviour
             case "map": mapSelectScreen.SetActive(true); break;
             case "battle": battleScreen.SetActive(true); break;
             case "reward": rewardScreen.SetActive(true); break;
-            case "bonfire": bonfireScreen.SetActive(true); break;
             case "chest": chestScreen.SetActive(true); break;
             case "victory": victoryScreen.SetActive(true); break;
             case "gameOver": gameOverScreen.SetActive(true); break;
@@ -128,8 +106,11 @@ public class UIManager : MonoBehaviour
 
     public void UpdateEnemyUI(List<Enemy> enemies)
     {
-        // for now just log — full enemy UI needs enemyUIPrefab setup
-        // TODO: instantiate enemy UI panels if not done yet
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy == null || enemy.IsDead()) continue;
+            enemy.UpdateHealthUI();
+        }
     }
 
     public void RefreshHand(List<CardData> hand, System.Action<CardData> onCardClicked)
@@ -200,20 +181,6 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-
-    // bonfire room
-
-    public void ShowBonfire(System.Action onRest)
-    {
-        // find and wire the rest button inside the bonfire screen
-        Button restButton = bonfireScreen.GetComponentInChildren<Button>();
-        if (restButton != null)
-        {
-            restButton.onClick.RemoveAllListeners();
-            restButton.onClick.AddListener(() => onRest());
-        }
-    }
-
     // win/loss screens
 
     public void ShowVictoryScreen(RunStats stats)

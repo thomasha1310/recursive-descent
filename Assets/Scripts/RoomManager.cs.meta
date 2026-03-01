@@ -1,2 +1,16 @@
 fileFormatVersion: 2
 guid: 2b58b98432db6614fa6c44863e52ef2b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - mosquitoData: {fileID: 11400000, guid: c453825aeeb5887438da2c39ae88d914, type: 2}
+  - cockroachData: {fileID: 11400000, guid: 63c4a926755934c48a1779e1beb639ee, type: 2}
+  - spiderData: {fileID: 11400000, guid: fbd100c8c14fbbd49833ada32edf5726, type: 2}
+  - mothData: {fileID: 11400000, guid: 73ffe26b77773fe439bde7de83d303a5, type: 2}
+  - bossData: {fileID: 11400000, guid: 1134226d61df25d46b2ff1863d4a05ad, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

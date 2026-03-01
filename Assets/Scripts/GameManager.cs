@@ -234,17 +234,6 @@ public class GameManager : MonoBehaviour
         uiManager.ShowCardRewards(rewards, OnRewardCardPicked);
     }
 
-    public void ShowBonfire()
-    {
-        uiManager.ShowScreen("bonfire");
-        uiManager.ShowBonfire(() =>
-        {
-            player.Heal(player.Data.maxHealth);
-            uiManager.UpdatePlayerUI(player);
-            roomManager.AdvanceToNextRoom();
-        });
-    }
-
     public void ShowMap()
     {
         uiManager.ShowScreen("map");
