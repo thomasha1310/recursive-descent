@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     // the GAME FLOW METHODS
 
-    public void StartNewRun(PlayerClassData selectedClass)
+    public void StartNewRun(PlayerClass selectedClass)
     {
         // Initialize player from class data
         // Reset all run stats

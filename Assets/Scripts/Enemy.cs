@@ -1,62 +1,55 @@
-//the enemies class
-
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[System.Serializable]
-public class EnemyAttack
-{
-    public string attackName;
-    [Range(0f, 1f)] public float weight;    // Probability of using this attack
-    public int minDamage;
-    public int maxDamage;
-    public int overconfidenceGain;
-    public bool appliesEffect;
-    public EffectType effect;
-    public int effectDuration;
-    public bool effectTargetsSelf;          // Enraged targets self
-}
-
-//kind of define the AI of the enemy
-
 public class Enemy : Entity
 {
     private EnemyData enemyData;
-
-    // What the enemy intends to do next (shown to player)
-    private EnemyAttack nextAction;
-
-    // properties of the enemy
+    private EnemyActionData intent;
 
     public EnemyData EnemyData => enemyData;
-    public EnemyAttack NextAction => nextAction;
+    public EnemyActionData Intent => intent;
 
     // setup
 
     public override void Initialize(int id, EntityData entityData)
     {
-
+        base.Initialize(id, entityData);
+        enemyData = entityData as EnemyData;
+        DecideNextIntent();
     }
 
     // dumbass AI 
 
-    public void DecideNextAction()
+    public void DecideNextIntent()
     {
-        // Weighted random selection from data.attacks
-        // Store in nextAction so UI can show intent
-        // TODO
+        int totalWeight = 0;
+        foreach (var action in EnemyData.actionPool)
+        {
+            totalWeight += action.Value;
+        }
+        int roll = Random.Range(0, totalWeight);
+        totalWeight = 0;
+        foreach (var action in EnemyData.actionPool)
+        {
+            totalWeight += action.Value;
+            if (totalWeight > roll)
+            {
+                intent = action.Key;
+                return;
+            }
+        }
     }
 
-    public void ExecuteAction(Player player, GameManager manager)
+    public void TakeAction(GameManager manager)
     {
-        // If Suppressed, skip turn
-        // Calculate damage with GetDamageMultiplier()
-        // Randomize between minDamage and maxDamage
-        // Apply damage to player
-        // Apply any effects
-        // Gain overconfidence if attack grants it
-        // Pick next intended action
-        // TODO
+        if (HasEffect(EffectType.Suppressed))
+        {
+            DecideNextIntent();
+            return;
+        }
+
+        intent.PerformAction(this, manager);
+        DecideNextIntent();
     }
 }

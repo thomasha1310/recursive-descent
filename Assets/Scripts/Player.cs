@@ -1,104 +1,113 @@
-// the PlAyer
-
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : Entity
 {
-    [Header("Player Config")]
-    [SerializeField] private PlayerClassData classData;
+    [SerializeField] private PlayerData playerData;
 
-    [Header("Runtime State")]
     private int energy;
-    private int maxEnergy = 3;
+    private const int MAX_ENERGY = 3;
 
-    private List<Card> deck = new List<Card>();
-    private List<Card> hand = new List<Card>();
-    private List<Card> drawPile = new List<Card>();
-    private List<Card> discardPile = new List<Card>();
+    private readonly List<Card> hand = new();
+    private readonly List<Card> drawPile = new();
+    private readonly List<Card> discardPile = new();
 
     // properties
 
     public int Energy => energy;
-    public int MaxEnergy => maxEnergy;
     public List<Card> Hand => hand;
-    public List<Card> Deck => deck;
+    public List<Card> DrawPile => drawPile;
+    public List<Card> DiscardPile => discardPile;
 
     // initialization
 
-    public void InitializeFromClass(PlayerClassData classData)
+    public override void Initialize(int id, EntityData entityData)
     {
-        // Set health from classData.maxHP
-        // Copy classData.startingDeck into deck
-        // TODO
+        base.Initialize(id, entityData);
+        playerData = entityData as PlayerData;
+        energy = 3;
+        foreach (Card card in playerData.startingDeck)
+        {
+            drawPile.Add(card);
+        }
+        Shuffle(drawPile);
     }
-
-    // manage the energy
 
     public void ResetEnergy()
     {
-        // energy = maxEnergy at start of turn
-        // TODO
+        energy = MAX_ENERGY;
     }
 
-    public bool SpendEnergy(int amount)
+    public void ModifyEnergy(int amount)
     {
-        // Return false if not enough
-        // TODO
-        return false;
-    }
-
-    public void GainEnergy(int amount)
-    {
-        // TODO
-    }
-
-    // card manageenmtn
-
-    public void StartBattle()
-    {
-        // Move all deck cards into drawPile
-        // Shuffle drawPile
-        // Clear hand and discardPile
-        // TODO
+        energy += amount;
     }
 
     public void DrawCards(int count)
     {
-        // For each card to draw:
-        //   If drawPile is empty, shuffle discardPile into drawPile
-        //   Move top card from drawPile to hand
-        // TODO
+        for (int n = 0; n < count; n++)
+        {
+            if (drawPile.Count == 0)
+            {
+                foreach (Card card in discardPile)
+                {
+                    drawPile.Add(card);
+                }
+                discardPile.Clear();
+
+                Shuffle(drawPile);
+            }
+
+            hand.Add(drawPile[^1]);
+            drawPile.RemoveAt(drawPile.Count - 1);
+        }
+    }
+
+    private void Shuffle(List<Card> cards)
+    {
+        int n = cards.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n);
+            (cards[n], cards[k]) = (cards[k], cards[n]);
+        }
     }
 
     public void PlayCard(Card card)
     {
-        // Remove from hand
-        // Add to discardPile
-        // TODO
+        hand.Remove(card);
+        discardPile.Add(card);
     }
 
-    public void DiscardHand()
+    public void ResetCards()
     {
-        // Move all hand cards to discardPile
-        // Called at end of turn
-        // TODO
+        foreach (Card card in hand)
+        {
+            drawPile.Add(card);
+        }
+        foreach (Card card in discardPile)
+        {
+            drawPile.Add(card);
+        }
+        hand.Clear();
+        discardPile.Clear();
+        Shuffle(drawPile);
     }
 
     public void AddCardToDeck(Card card)
     {
-        // Called when player picks a reward card
-        // TODO
+        drawPile.Add(card);
     }
 
     // turn management
 
     public void StartTurn()
     {
-        // ResetEnergy()
-        // ResetOverconfidence()
-        // DrawCards(5)
-        // TickEffects()
-        // TODO
+        ResetEnergy();
+        ResetOverconfidence();
+        DrawCards(5 - hand.Count);
+        TickEffects();
     }
 }

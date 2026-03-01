@@ -6,5 +6,7 @@ public class PlayerData : EntityData
 {
     public List<Card> startingHand;
     public List<Card> startingDeck;
+    public PlayerClass playerClass;
+    public Sprite avatar;
 
 }
